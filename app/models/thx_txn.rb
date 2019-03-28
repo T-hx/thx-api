@@ -1,0 +1,2 @@
+class ThxTxn < ApplicationRecord
+end
