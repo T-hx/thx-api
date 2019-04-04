@@ -17,10 +17,7 @@ class ThxTxnsController < ApplicationController
         ThxTxnSerializer.new(thx_txn)
       ).serializable_hash
       ActionCable.server.broadcast 'thx_txns_channel', serialized_data
-      # render json: @thx_txn, status: :created, location: @thx_txn
       head :ok
-    # else
-    #   render json: @thx_txn.errors, status: :unprocessable_entity
     end
   end
 
