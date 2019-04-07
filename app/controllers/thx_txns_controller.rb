@@ -10,7 +10,7 @@ class ThxTxnsController < ApplicationController
 
   # POST /thx_txns
   def create
-    thx_txn = ThxTxn.new(thx_txn_params)
+    thx_txn = ThxTxn.new(thx_txn_params.merge({sender_id: current_user.id, receiver_id: current_user.id}))
 
     if thx_txn.save
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
@@ -24,7 +24,7 @@ class ThxTxnsController < ApplicationController
   private
     # Only allow a trusted parameter "white list" through.
     def thx_txn_params
-      params.require(:thx_txn).permit(:thx, :comment, :sender, :receiver)
+      params.require(:thx_txn).permit(:thx, :comment)
     end
 end
 
