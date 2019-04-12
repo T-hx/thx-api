@@ -7,3 +7,4 @@
 User.create(email: 'test@test.com', password: 'testtest', nickname: 'shun', name: 'shun takagi', thx_balance: 1000, address: '123')
 User.create(email: 'test2@test.com', password: 'testtest2', nickname: 'tarou', name: 'tarou sasaki', thx_balance: 1000, address: '234')
 User.create(email: 'test3@test.com', password: 'testtest3', nickname: 'hazime', name: 'hazime kato', thx_balance: 1000, address: '345')
+User.create(email: 'test4@test.com', password: 'testtest4', nickname: 'yuta', name: 'yuta kato', thx_balance: 1000, address: '456')
