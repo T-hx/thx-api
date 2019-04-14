@@ -4,7 +4,7 @@ class UserSerializer < ActiveModel::Serializer
            foreign_key: 'receiver_id', dependent: :nullify
   has_many :senders,  class_name:  'ThxTxn', serializer: ThxTxnSerializer,
            foreign_key: 'sender_id', dependent: :nullify
-  attributes :id, :name, :nickname, :email, :avatar_url, :created_at
+  attributes :id, :name, :nickname, :email, :address, :thx_balance, :received_thx, :avatar_url, :created_at
 
   def avatar_url
     url_for(object.avatar) if object.avatar.attached?
