@@ -18,6 +18,8 @@ class ThxTxnsController < ApplicationController
       ).serializable_hash
       ActionCable.server.broadcast 'thx_txns_channel', serialized_data
       head :ok
+      broadcast_sender
+      broadcast_receiver
     end
   end
 
@@ -38,7 +40,7 @@ class ThxTxnsController < ApplicationController
       sender_serialized_data = ActiveModelSerializers::Adapter::Json.new(
         UserSerializer.new(current_user)
       ).serializable_hash
-      ActionCable.server.broadcast 'users_channel', sender_serialized_data
+      ActionCable.server.broadcast "users_#{current_user.id}", sender_serialized_data
       head :ok
     end
 
@@ -46,7 +48,7 @@ class ThxTxnsController < ApplicationController
     receiver_serialized_data = ActiveModelSerializers::Adapter::Json.new(
       UserSerializer.new(@receiver)
     ).serializable_hash
-    ActionCable.server.broadcast 'users_channel', receiver_serialized_data
+    ActionCable.server.broadcast "users_#{@receiver.id}", receiver_serialized_data
     head :ok
   end
     # Only allow a trusted parameter "white list" through.

@@ -1,9 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  has_many :receivers,  class_name:  'ThxTxn', serializer: ThxTxnSerializer,
-           foreign_key: 'receiver_id', dependent: :nullify
-  has_many :senders,  class_name:  'ThxTxn', serializer: ThxTxnSerializer,
-           foreign_key: 'sender_id', dependent: :nullify
   attributes :id, :name, :nickname, :email, :address, :thx_balance, :received_thx, :avatar_url, :created_at
 
   def avatar_url
