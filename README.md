@@ -1,24 +1,41 @@
-# README
+### what
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Api application for thx system(peer to peer bonus)
 
-Things you may want to cover:
+### version 
 
-* Ruby version
+```bash
+$ ruby -v
+ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-darwin18]
 
-* System dependencies
+$ bundler -v
+Bundler version 1.17.1
 
-* Configuration
+$ mysql --version
+mysql  Ver 14.14 Distrib 5.7.24, for osx10.14 (x86_64) using  EditLine wrapper
 
-* Database creation
+$ redis-server --version
+Redis server v=5.0.3 sha=00000000:0 malloc=libc bits=64 build=457be8ba4fa3e51f
 
-* Database initialization
+```
 
-* How to run the test suite
+### set up
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+git clone git@github.com:T-hx/thx-api.git
+bundle install --path=vendor/bundle
+mysql.server start
+bin/rake db:setup
+```
 
-* Deployment instructions
+### how to run api server
+```bash
+redis-server
+bundle exec rails s -p 3001
+```
 
-* ...
+
+### how to run front server
+```
+npm start
+```
